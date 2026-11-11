@@ -443,8 +443,3 @@ y observabilidad siguen siendo necesarias antes de manejar información producti
 9. [Repositorio del profesor: tectijuana/erlang-proyectos](https://github.com/tectijuana/erlang-proyectos).
 
 ---
-
-**Estado:** [Gist ya publicado](https://gist.github.com/Espana-zip/33b8b0434dc3d1cb7d9dbff8e289fde7).
-**Repositorio:** https://github.com/Espana-zip/ganado81. Ver `docs/ESTADO_PUBLICACION.md`.
-Las operaciones Git no activan ni modifican el servicio de Corellium.
-Un Secret Gist es no listado, no privado: cualquiera con el enlace puede leerlo.
