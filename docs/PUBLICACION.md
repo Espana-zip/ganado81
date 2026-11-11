@@ -1,5 +1,9 @@
 # Publicar el repositorio y mantener el Gist existente
 
+> Registro/procedimiento de preparación anterior a la publicación. El estado
+> posterior está en [ESTADO_PUBLICACION.md](ESTADO_PUBLICACION.md). Las menciones
+> a recursos pendientes describen la preparación, no el estado del remoto.
+
 ## Estado y separación del despliegue
 
 El Gist **ya está publicado**:

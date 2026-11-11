@@ -1,5 +1,9 @@
 # Revisión final de la entrega y rúbrica
 
+> Registro/procedimiento de preparación anterior a la publicación. El estado
+> posterior está en [ESTADO_PUBLICACION.md](ESTADO_PUBLICACION.md). Las menciones
+> a recursos pendientes describen la preparación, no el estado del remoto.
+
 ## Estado de recursos
 
 - **Gist existente, accesible y comprobado:**

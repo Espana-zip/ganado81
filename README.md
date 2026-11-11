@@ -1,7 +1,7 @@
 # Proyecto 81 — Ganado81
 
-**Código fuente completo preparado para la cuenta Espana-zip.** Estado al preparar
-esta entrega: repositorio remoto sin crear ni publicar desde esta copia.
+**Código fuente completo:** [Espana-zip/ganado81](https://github.com/Espana-zip/ganado81).
+Backend ejecutado exclusivamente en Corellium ARM64; Fedora es cliente de desarrollo y SSH.
 
 **Manual académico publicado:** [Gist de Ganado81](https://gist.github.com/Espana-zip/33b8b0434dc3d1cb7d9dbff8e289fde7).
 
@@ -445,6 +445,6 @@ y observabilidad siguen siendo necesarias antes de manejar información producti
 ---
 
 **Estado:** [Gist ya publicado](https://gist.github.com/Espana-zip/33b8b0434dc3d1cb7d9dbff8e289fde7).
-Al preparar esta copia no se publicó ni se inicializó con Git. Los comandos
-para hacerlo, únicamente con autorización, están en `docs/PUBLICACION.md`.
+**Repositorio:** https://github.com/Espana-zip/ganado81. Ver `docs/ESTADO_PUBLICACION.md`.
+Las operaciones Git no activan ni modifican el servicio de Corellium.
 Un Secret Gist es no listado, no privado: cualquiera con el enlace puede leerlo.
