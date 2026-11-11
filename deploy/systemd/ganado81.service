@@ -1,0 +1,40 @@
+[Unit]
+Description=Ganado81 - Cowboy y Erlang/OTP en Corellium ARM64
+After=network.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=exec
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/ganado81/actual
+ExecStart=/usr/bin/bash /home/pi/ganado81/bin/arrancar.sh
+ExecStartPost=/usr/bin/python3 /home/pi/ganado81/bin/comprobar_api.py --esperar 30
+ExecStop=/usr/bin/bash /home/pi/ganado81/bin/parar.sh $MAINPID
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=45
+TimeoutStopSec=30
+KillSignal=SIGTERM
+KillMode=control-group
+Environment=HOME=/home/pi
+Environment=ERL_CRASH_DUMP=/home/pi/ganado81/estado/erl_crash.dump
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ganado81
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/pi/ganado81/estado
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+LimitCORE=0
+
+[Install]
+WantedBy=multi-user.target

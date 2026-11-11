@@ -1,0 +1,98 @@
+{
+  "scope": "Resumen publico de registros existentes; no logs ni snapshots internos. No es una ejecucion nueva.",
+  "runtime_recorded_on": "2026-11-10",
+  "environment": {
+    "guest": "Debian 11 Bullseye",
+    "architecture": "aarch64",
+    "otp": "27.3.4.19",
+    "erts": "15.2.7.14",
+    "jit": true,
+    "rebar3": "3.25.1"
+  },
+  "build_and_tests": {
+    "compile_exit": 0,
+    "eunit_exit": 0,
+    "eunit_tests": 38,
+    "eunit_failures": 0,
+    "groups": {
+      "domain": 11,
+      "api": 7,
+      "http_and_lifecycle": 15,
+      "runtime_json": 5
+    },
+    "new_execution_for_this_delivery": false
+  },
+  "http_statuses_recorded": [
+    200,
+    201,
+    400,
+    404,
+    409
+  ],
+  "isolated_supervision": {
+    "date_utc": "2026-11-10T06:25:58Z",
+    "temporary_port": 18081,
+    "before": {
+      "supervisor": "<0.131.0>",
+      "worker": "<0.132.0>",
+      "ranch": "<0.123.0>",
+      "cowboy": "<0.127.0>",
+      "listener": "<0.133.0>"
+    },
+    "after": {
+      "supervisor": "<0.131.0>",
+      "worker": "<0.153.0>",
+      "ranch": "<0.123.0>",
+      "cowboy": "<0.127.0>",
+      "listener": "<0.133.0>"
+    },
+    "fault_injections": 1,
+    "supervisor_unchanged": true,
+    "cowboy_unchanged": true,
+    "listener_unchanged": true,
+    "temporary_state_lost": true,
+    "production_state_unchanged": true,
+    "temporary_counts_before": {
+      "animales": 1,
+      "pesajes": 2,
+      "alertas": 1
+    },
+    "temporary_counts_after": {
+      "animales": 0,
+      "pesajes": 0,
+      "alertas": 0
+    }
+  },
+  "visual_demo": {
+    "fictional_data_only": true,
+    "initial_weight_kg": 200,
+    "second_weight_kg": 170,
+    "loss_pct": 15,
+    "alert_severity": "media",
+    "previous_data_unchanged": true,
+    "service_restarted": false,
+    "chaos_executed": false,
+    "voice_original": "synthetic and disclosed",
+    "shared_drive_variant": "silent; no audio track",
+    "javascript_exceptions_recorded": 0
+  },
+  "last_service_record": {
+    "at_utc": "2026-11-10T22:31:19.141364+00:00",
+    "state": "active",
+    "mainpid": 500,
+    "result": "success",
+    "nrestarts": 0,
+    "bind": "127.0.0.1:8080",
+    "health_via_tunnel": 200,
+    "animal_count": 5,
+    "alert_count": 3,
+    "current_availability_verified": false
+  },
+  "public_evidence": {
+    "asciinema": "https://asciinema.org/a/bYBtt76RnTkA6bHm",
+    "asciinema_type": "historical evidence retimed to 180s; not a new run",
+    "drive": "https://drive.google.com/file/d/1dDCL5oyxCtOCQ8UJU8FjWtTI-1CIt2iS/view?usp=sharing",
+    "gist": "https://gist.github.com/Espana-zip/33b8b0434dc3d1cb7d9dbff8e289fde7",
+    "stitch": "https://stitch.withgoogle.com/projects/16518304779750527711"
+  }
+}

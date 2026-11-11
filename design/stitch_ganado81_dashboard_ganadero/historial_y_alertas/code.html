@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary": "#ffffff", "on-primary": "#ffffff", "secondary": "#8b5008", "secondary-container": "#ffb064", "surface-variant": "#e3e2df", "on-secondary-container": "#764200", "surface-container": "#efeeeb", "primary": "#082e21", "on-primary-fixed-variant": "#2b4d3f", "inverse-primary": "#a9cfbc", "on-tertiary-container": "#91afa0", "on-tertiary-fixed": "#032016", "on-tertiary-fixed-variant": "#304c40", "surface": "#faf9f6", "on-error-container": "#93000a", "inverse-on-surface": "#f2f1ee", "surface-tint": "#426656", "surface-bright": "#faf9f6", "on-surface": "#1a1c1a", "surface-container-low": "#f4f3f0", "secondary-fixed-dim": "#ffb875", "on-background": "#1a1c1a", "error-container": "#ffdad6", "tertiary": "#102d22", "on-error": "#ffffff", "primary-fixed-dim": "#a9cfbc", "tertiary-container": "#274337", "surface-container-high": "#e9e8e5", "tertiary-fixed-dim": "#aecebe", "tertiary-fixed": "#caead9", "primary-fixed": "#c4ebd8", "on-secondary-fixed-variant": "#6b3b00", "secondary-fixed": "#ffdcc0", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "surface-dim": "#dbdad7", "primary-container": "#214436", "background": "#faf9f6", "outline": "#717974", "on-secondary-fixed": "#2d1600", "on-primary-container": "#8bb19f", "inverse-surface": "#2f312f", "on-surface-variant": "#414844", "error": "#ba1a1a", "surface-container-highest": "#e3e2df", "outline-variant": "#c1c8c3", "on-primary-fixed": "#002116" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter": "1rem", "gutter-desktop": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "margin-tablet": "1.5rem", "margin-desktop": "2.5rem", "space-xs": "0.25rem", "margin": "1rem", "space-md": "0.75rem", "space-lg": "1.25rem" }, "fontFamily": { "headline-lg-mobile": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ], "headline-xl": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "label-md": [ "Inter" ], "body-md": [ "Inter" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "headline-lg": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "data-metric": [ "Plus Jakarta Sans" ], "label-sm": [ "Inter" ], "data-tabular": [ "Inter" ] }, "fontSize": { "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "headline-sm": [ "18px", { "lineHeight": "24px", "fontWeight": "600" } ], "headline-xl": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-md": [ "22px", { "lineHeight": "28px", "fontWeight": "600" } ], "label-md": [ "13px", { "lineHeight": "18px", "fontWeight": "500" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-xl-mobile": [ "30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "data-metric": [ "28px", { "lineHeight": "34px", "fontWeight": "700" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "data-tabular": [ "14px", { "lineHeight": "20px", "fontWeight": "500" } ] } } } };</script></head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 h-16 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-16 px-gutter-desktop flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-md"><img alt="Ganado81 Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W9SQK7xgJAoMTCD2WdWlV3L3FOH1jfJvqblF8ZMBiRgpdYTYI0QJYMjX9BO0CegPK8Ae_OhpWNkBFkbm5hW7n6Jd0_5L0AXHKzHxrKKYrCrGgvZSxgXixWX7NM77qdMkQlfyCwL-u-fNRz3GjRkPwvxy5uBeNtE9MzGCkU7rroo-DRow8P1kDcSEBOC3LVFX3nfsF2INZofQ7WaVS-iggE3qxUWTuiL9z8fOmKuCTCWQ"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Ganado81</span></div><div class="h-6 w-px bg-surface-variant hidden md:block"></div><button class="hidden md:flex items-center gap-space-sm px-space-md py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors text-left"><span class="material-symbols-outlined text-secondary text-[18px]">landscape</span><div><div class="font-label-sm text-label-sm text-secondary uppercase font-semibold leading-none">Rancho Activo</div><div class="font-body-sm text-body-sm text-on-surface font-medium leading-tight">Rancho Las Moras • Hermosillo, Son.</div></div><span class="material-symbols-outlined text-on-surface-variant text-[16px]">expand_more</span></button><div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="hidden sm:inline">Datos Simulados (Entorno Demo)</span><span class="sm:hidden">Demo</span></div></div><div class="flex items-center gap-space-md"><button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors"><span class="material-symbols-outlined text-[16px]">sync</span><span class="hidden lg:inline">Sincronizar Campo</span></button><div class="relative"><button aria-label="Alertas sanitarias y operativas" class="w-9 h-9 rounded-lg flex items-center justify-center bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-secondary text-on-secondary text-[10px] font-bold flex items-center justify-center">3</span></button></div><div class="flex items-center gap-space-sm pl-space-sm"><div class="text-right hidden sm:block"><div class="font-label-md text-label-md text-on-surface font-medium leading-tight">Ing. Rogelio Valenzuela</div><div class="font-label-sm text-label-sm text-on-surface-variant leading-none">Administrador Ganadero</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex flex-col justify-between py-space-lg"><div class="flex flex-col gap-space-xs px-space-md"><div class="px-space-md py-space-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Módulos Operativos</div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_1px_4px_rgba(33,68,54,0.1)]"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="panel-general" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-label-md text-label-md">Panel General</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="ficha-de-animal" href="#"><span class="material-symbols-outlined text-[20px]">badge</span><span class="font-label-md text-label-md">Ficha de Animal</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm transition-colors bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_1px_4px_rgba(33,68,54,0.1)]" data-path="historial-y-alertas" href="#"><span class="material-symbols-outlined text-[20px]">medical_services</span><span class="font-label-md text-label-md">Historial y Alertas</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="potreros" href="#"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-md text-label-md">Potreros</span></div><span class="font-label-sm text-label-sm px-space-xs rounded bg-surface-variant text-on-surface font-semibold">8</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reportes-siniiga" href="#"><span class="material-symbols-outlined text-[20px]">assignment_turned_in</span><span class="font-label-md text-label-md">Reportes SINIIGA</span></a></nav></div><div class="px-space-md"><div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs text-secondary"><span class="material-symbols-outlined text-[16px]">wifi_tethering</span><span class="font-label-sm text-label-sm font-semibold uppercase">Modo de Campo</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Listo para captura de pesaje y aretado sin red.</p></div></div></aside><div class="pl-64"><main class="w-full pt-16 min-h-[calc(100vh-3rem)] px-gutter-desktop py-space-lg bg-surface"><div class="flex flex-col w-full gap-space-lg">
+<!-- Encabezado Principal y Resumen de Estado -->
+<section class="flex flex-col gap-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs text-secondary mb-1">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Trazabilidad y Sanidad Bovina</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Bitácora Central de Eventos y Gestión de Alertas</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Control cronológico de incidencias clínicas, fluctuaciones de biomasa y rotación de potreros.</p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-sm bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md rounded shadow-sm transition-colors" onclick="alert('Generando exportación de bitácora en formato XLS/PDF...')">
+<span class="material-symbols-outlined text-[18px] text-secondary">file_download</span>
+<span>Exportar Bitácora</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md rounded shadow-sm transition-colors" onclick="alert('Abriendo asistente de registro masivo de campo...')">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Registrar Evento Masivo</span>
+</button>
+</div>
+</div>
+<!-- Indicador de Datos Simulados y Métricas Clave -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-md">
+<!-- Tarjeta 1: Alertas Críticas -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Alertas Críticas Activas</span>
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-sm">
+<span class="font-data-metric text-data-metric text-error">03</span>
+<span class="font-label-sm text-label-sm text-error bg-error-container/40 px-1.5 py-0.5 rounded font-semibold">Intervención Urgente</span>
+</div>
+<div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-error">priority_high</span>
+          1 distocia y 2 caídas abruptas de peso
+        </div>
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+</div>
+<!-- Tarjeta 2: En Advertencia -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Eventos en Advertencia</span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-sm">
+<span class="font-data-metric text-data-metric text-secondary">07</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed/50 px-1.5 py-0.5 rounded font-semibold">Monitoreo 24-48h</span>
+</div>
+<div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">schedule</span>
+          Aforos de forraje y retiros activos
+        </div>
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+</div>
+<!-- Tarjeta 3: Novedades de la Semana -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Registros Esta Semana</span>
+<span class="material-symbols-outlined text-primary-container text-[18px]">event_note</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-sm">
+<span class="font-data-metric text-data-metric text-primary">42</span>
+<span class="font-label-sm text-label-sm text-on-primary-container bg-primary-fixed/40 px-1.5 py-0.5 rounded font-semibold">+18% vs semana prev.</span>
+</div>
+<div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">done_all</span>
+          Pesajes, movimientos y aretado
+        </div>
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+</div>
+<!-- Tarjeta 4: Resguardo Operativo / Banner Simulación -->
+<div class="bg-surface-container-high p-space-md rounded shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase font-semibold text-secondary">Protocolo Valenzuela</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-[10px] font-bold tracking-wider">MODO SIMULADO</span>
+</div>
+<p class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant leading-snug">
+          Entorno con datos simulados para validación de flujo ganadero en Rancho Las Moras (8 potreros operativos).
+        </p>
+<div class="mt-space-xs flex items-center gap-1 text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px] text-primary">wifi_channel</span>
+<span>Báscula y aretado listos en corral</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Pestañas de Vista Rápida -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 bg-surface-container-low p-1.5 rounded">
+<button class="tab-btn px-space-md py-space-xs rounded font-label-md text-label-md text-on-primary bg-primary shadow-sm font-semibold transition-all whitespace-nowrap" data-tab="todas">
+      Todas las Novedades (48)
+    </button>
+<button class="tab-btn px-space-md py-space-xs rounded font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all whitespace-nowrap flex items-center gap-1" data-tab="criticas">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+      Alertas Críticas Sanitarias (3)
+    </button>
+<button class="tab-btn px-space-md py-space-xs rounded font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all whitespace-nowrap flex items-center gap-1" data-tab="peso">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+      Anomalías de Peso (5)
+    </button>
+<button class="tab-btn px-space-md py-space-xs rounded font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all whitespace-nowrap flex items-center gap-1" data-tab="movimientos">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+      Movimientos entre Potreros (14)
+    </button>
+</div>
+<!-- Barra de Filtros Avanzada y Multifiltro -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col gap-space-md">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-sm items-center">
+<!-- Filtro 1: Tipo de Evento -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold" for="filter-type">Tipo de Evento</label>
+<div class="relative">
+<select class="w-full bg-surface-container py-2 pl-space-sm pr-space-lg rounded font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:bg-surface-container-high transition-colors cursor-pointer" id="filter-type">
+<option value="all">Todos los Eventos</option>
+<option value="sanitario">Alertas Sanitarias</option>
+<option value="peso">Pérdida de Peso / Ganancia</option>
+<option value="movimiento">Movimientos de Ganado</option>
+<option value="pesaje">Pesajes Ordinarios</option>
+<option value="tratamiento">Tratamientos y Fármacos</option>
+<option value="nacimiento">Nacimientos / Bajas</option>
+</select>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Filtro 2: Nivel de Severidad -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold" for="filter-severity">Severidad</label>
+<div class="relative">
+<select class="w-full bg-surface-container py-2 pl-space-sm pr-space-lg rounded font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:bg-surface-container-high transition-colors cursor-pointer" id="filter-severity">
+<option value="all">Cualquier Nivel</option>
+<option value="critico">Crítico (Acción Hoy)</option>
+<option value="advertencia">Advertencia (En Observación)</option>
+<option value="normal">Normal / Informativo</option>
+</select>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Filtro 3: Potrero Afectado -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold" for="filter-pasture">Potrero / Lote</label>
+<div class="relative">
+<select class="w-full bg-surface-container py-2 pl-space-sm pr-space-lg rounded font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:bg-surface-container-high transition-colors cursor-pointer" id="filter-pasture">
+<option value="all">Todos los 8 Potreros</option>
+<option value="p1">Potrero 1 (El Mezquite)</option>
+<option value="p2">Potrero 2 (Los Álamos)</option>
+<option value="p3">Potrero 3 (La Nopalera)</option>
+<option value="p4">Potrero 4 (Cerro Prieto)</option>
+<option value="p5">Potrero 5 (El Bajío)</option>
+<option value="p6">Potrero 6 (El Rodeo)</option>
+<option value="p7">Potrero 7 (San Isidro)</option>
+<option value="p8">Potrero 8 (La Herradura)</option>
+</select>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Filtro 4: Rango de Fecha -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold" for="filter-date">Rango Temporal</label>
+<div class="relative">
+<select class="w-full bg-surface-container py-2 pl-space-sm pr-space-lg rounded font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:bg-surface-container-high transition-colors cursor-pointer" id="filter-date">
+<option value="7d">Últimos 7 días</option>
+<option value="30d">Últimos 30 días</option>
+<option value="temporada">Temporada Actual 2024</option>
+<option value="custom">Rango Personalizado...</option>
+</select>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none">date_range</span>
+</div>
+</div>
+<!-- Filtro 5: Búsqueda SINIIGA / Arete -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold" for="search-ear-tag">Búsqueda Rápida</label>
+<div class="relative">
+<input class="w-full bg-surface-container py-2 pl-space-md pr-8 rounded font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-high placeholder:text-on-surface-variant/60" id="search-ear-tag" placeholder="Arete SINIIGA o lote..." type="text"/>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant absolute right-2.5 top-1/2 -translate-y-1/2">search</span>
+</div>
+</div>
+</div>
+<!-- Filtros activos y reseteo rápido -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs bg-surface-container-low/60 p-2 rounded">
+<div class="flex flex-wrap items-center gap-space-xs font-body-sm text-body-sm">
+<span class="text-on-surface-variant font-medium">Filtrando por:</span>
+<span class="inline-flex items-center gap-1 bg-surface-container-highest px-2 py-0.5 rounded text-on-surface font-label-sm text-label-sm">
+<span>Últimos 7 días</span>
+<button class="hover:text-error material-symbols-outlined text-[14px]">close</button>
+</span>
+<span class="inline-flex items-center gap-1 bg-surface-container-highest px-2 py-0.5 rounded text-on-surface font-label-sm text-label-sm">
+<span>Rancho Las Moras</span>
+</span>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="font-label-sm text-label-sm text-secondary hover:underline font-semibold flex items-center gap-1" onclick="document.getElementById('search-ear-tag').value='';">
+<span class="material-symbols-outlined text-[14px]">filter_alt_off</span>
+          Limpiar filtros
+        </button>
+<span class="text-on-surface-variant font-label-sm text-label-sm">8 de 48 eventos visibles</span>
+</div>
+</div>
+</div>
+<!-- Tabla Principal de la Bitácora Ganadera -->
+<div class="bg-surface-container-lowest rounded shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-md text-body-md">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm tracking-wider uppercase">
+<th class="py-space-md px-space-md w-28" scope="col">Nivel / Estatus</th>
+<th class="py-space-md px-space-md w-36" scope="col">Fecha y Hora</th>
+<th class="py-space-md px-space-md" scope="col">Arete / Identificador</th>
+<th class="py-space-md px-space-md" scope="col">Categoría</th>
+<th class="py-space-md px-space-md" scope="col">Evento / Novedad Clínica</th>
+<th class="py-space-md px-space-md" scope="col">Potrero Asignado</th>
+<th class="py-space-md px-space-md" scope="col">Responsable</th>
+<th class="py-space-md px-space-md" scope="col">Acción Requerida / Resolución</th>
+</tr>
+</thead>
+<tbody class="divide-none">
+<!-- Fila 1: Crítico -->
+<tr class="hover:bg-surface-container-low/80 transition-colors bg-error-container/10">
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-error-container text-error font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                Crítico
+              </span>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-data-tabular text-data-tabular font-semibold text-on-surface">22/05/2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">07:45 hrs</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">MX-26-8104</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Arete Amarillo SINIIGA</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-medium">Novillo Brangus</span>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-semibold text-error">Pérdida acelerada de peso (-18 kg en 14d)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Pesaje previo: 412 kg → Actual: 394 kg. Apatía en corral.</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-semibold text-on-surface">Potrero 2</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Los Álamos</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-medium">MVZ Carlos Duarte</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Céd. 481903</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="p-1.5 rounded bg-surface-container font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-error">Pendiente:</span> Cuarentena preventiva y toma de frotis sanguíneo por sospecha de anaplasmosis.
+              </div>
+</td>
+</tr>
+<!-- Fila 2: Crítico -->
+<tr class="hover:bg-surface-container-low/80 transition-colors bg-error-container/10">
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-error-container text-error font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                Crítico
+              </span>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-data-tabular text-data-tabular font-semibold text-on-surface">21/05/2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">16:30 hrs</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">MX-26-7721</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Tatuaje Izq: LM-19</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-medium">Vientre Charolais</span>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-semibold text-error">Distocia en parto / Asistencia requerida</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Trabajo de parto prolongado (&gt;4 horas). Presentación posterior.</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-semibold text-on-surface">Potrero 6</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">El Rodeo</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-medium">Caporal Ramón M.</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Cuadrilla Parición</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="p-1.5 rounded bg-surface-container font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-secondary">Atendido:</span> Becerro viable asistido manualmente; vaca con desinflamatorio en observación médica.
+              </div>
+</td>
+</tr>
+<!-- Fila 3: Advertencia -->
+<tr class="hover:bg-surface-container-low/80 transition-colors bg-secondary-fixed/20">
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">error_outline</span>
+                Advertencia
+              </span>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-data-tabular text-data-tabular font-semibold text-on-surface">21/05/2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">11:15 hrs</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">MX-26-7940</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Arete Campaña 129</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-medium">Vientre Charbray</span>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-semibold text-secondary">Vencimiento de periodo de retiro antibiótico</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Tratamiento con Oxitetraciclina L.A. Restan 48h para fin de retiro.</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-semibold text-on-surface">Potrero 1</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">El Mezquite</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-medium">MVZ Carlos Duarte</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Sanidad Animal</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="p-1.5 rounded bg-surface-container font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-secondary">Instrucción:</span> Bloqueo temporal para venta o matanza; verificar estatus antes de traslado a báscula.
+              </div>
+</td>
+</tr>
+<!-- Fila 4: Advertencia -->
+<tr class="hover:bg-surface-container-low/80 transition-colors bg-secondary-fixed/20">
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">error_outline</span>
+                Advertencia
+              </span>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-data-tabular text-data-tabular font-semibold text-on-surface">20/05/2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">18:00 hrs</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">Lote Novillos 3</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">24 cabezas en lote</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-medium">Novillos Ceba</span>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-semibold text-secondary">Capacidad forrajera al límite (92%)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Consumo acelerado de buffel; riesgo de sobrepastoreo en zona baja.</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-semibold text-on-surface">Potrero 4</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Cerro Prieto</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-medium">Ing. Rogelio V.</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Administración</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="p-1.5 rounded bg-surface-container font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-primary">Planificación:</span> Programar apertura de compuerta a Potrero 5 (El Bajío) para este viernes temprano.
+              </div>
+</td>
+</tr>
+<!-- Fila 5: Advertencia -->
+<tr class="hover:bg-surface-container-low/80 transition-colors bg-secondary-fixed/20">
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">error_outline</span>
+                Advertencia
+              </span>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-data-tabular text-data-tabular font-semibold text-on-surface">20/05/2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">09:20 hrs</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">MX-26-8205</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Aretado de hato 44</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-medium">Vaquilla Angus</span>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-semibold text-secondary">Descenso de ganancia diaria (&lt;0.30 kg/d)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Esperado: 0.85 kg/d. Ganancia del ciclo: 0.22 kg/d durante 28 días.</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-semibold text-on-surface">Potrero 7</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">San Isidro</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-medium">Juan P.</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Pesador de Turno</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="p-1.5 rounded bg-surface-container font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-on-surface">Acción:</span> Chequeo coproparasitoscópico programado y suplementación proteica directa en saladero.
+              </div>
+</td>
+</tr>
+<!-- Fila 6: Normal -->
+<tr class="hover:bg-surface-container-low/80 transition-colors">
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Normal
+              </span>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-data-tabular text-data-tabular font-semibold text-on-surface">19/05/2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">15:00 hrs</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">Lote Vacuno Norte</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">35 cabezas registradas</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-medium">Vientres Gestantes</span>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-semibold text-on-surface">Movimiento rutinario de potrero (rotación)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Descanso de pastizal cumplido según calendario de forrajes.</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-semibold text-primary">Potrero 1 → Potrero 3</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">El Mezquite a La Nopalera</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-medium">Ramón M.</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Caporal General</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="p-1.5 rounded bg-surface-container font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-primary-container">Completado:</span> Traslado sin incidentes ni lesiones; bebederos y boyas verificados al 100%.
+              </div>
+</td>
+</tr>
+<!-- Fila 7: Normal -->
+<tr class="hover:bg-surface-container-low/80 transition-colors">
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Normal
+              </span>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-data-tabular text-data-tabular font-semibold text-on-surface">19/05/2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">08:30 hrs</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">MX-26-8401</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Arete Botón SINIIGA</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-medium">Becerro Macho</span>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-semibold text-on-surface">Areteado oficial SINIIGA y vacunación</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Aplicación de bacterina 8 vías (clostridiosis) y arete de trazabilidad.</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-semibold text-on-surface">Potrero 6</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">El Rodeo</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-medium">MVZ Carlos Duarte</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Céd. 481903</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="p-1.5 rounded bg-surface-container font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-primary-container">Completado:</span> Ficha de animal generada con éxito en base de datos central de Ganado81.
+              </div>
+</td>
+</tr>
+<!-- Fila 8: Normal -->
+<tr class="hover:bg-surface-container-low/80 transition-colors">
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Normal
+              </span>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-data-tabular text-data-tabular font-semibold text-on-surface">18/05/2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">17:10 hrs</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-data-tabular text-data-tabular font-bold text-primary">MX-26-8050</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Tatuaje LM-402</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface font-medium">Novillo Brangus</span>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="font-semibold text-on-surface">Pesaje favorable (+28 kg en ciclo mensual)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Ganancia de 0.93 kg/día con pastoreo en buffel y suplemento mineral.</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-semibold text-on-surface">Potrero 8</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">La Herradura</div>
+</td>
+<td class="py-space-md px-space-md align-top whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface font-medium">Juan P.</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Operador Báscula</div>
+</td>
+<td class="py-space-md px-space-md align-top">
+<div class="p-1.5 rounded bg-surface-container font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-primary">Conforme:</span> Parámetros dentro del percentil óptimo para lote de exportación.
+              </div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Paginación y Leyenda de Accesibilidad -->
+<div class="p-space-md bg-surface-container-low flex flex-col md:flex-row items-center justify-between gap-space-md">
+<!-- Leyenda de Accesibilidad No Dependiente Únicamente de Color -->
+<div class="flex flex-wrap items-center gap-space-md font-body-sm text-body-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold uppercase">Simbología:</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-error">warning</span>
+<span class="text-on-surface font-medium">Crítico (Requiere intervención hoy)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">error_outline</span>
+<span class="text-on-surface font-medium">Advertencia (En observación técnica)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">check_circle</span>
+<span class="text-on-surface font-medium">Normal (Registro operativo rutinario)</span>
+</div>
+</div>
+<!-- Controles de Paginación -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<span>Filas:</span>
+<select class="bg-surface-container px-2 py-1 rounded text-on-surface font-label-sm text-label-sm focus:outline-none">
+<option value="8">8 por página</option>
+<option value="15">15 por página</option>
+<option value="30">30 por página</option>
+<option value="50">50 por página</option>
+</select>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Mostrando 1-8 de 48 eventos simulados</span>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant disabled:opacity-40 transition-colors" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary font-label-md text-label-md font-bold flex items-center justify-center">
+            1
+          </button>
+<button class="w-8 h-8 rounded bg-surface-container hover:bg-surface-container-high font-label-md text-label-md text-on-surface flex items-center justify-center transition-colors">
+            2
+          </button>
+<button class="w-8 h-8 rounded bg-surface-container hover:bg-surface-container-high font-label-md text-label-md text-on-surface flex items-center justify-center transition-colors">
+            3
+          </button>
+<button class="w-8 h-8 rounded bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro-interacción: Filtrado de Pestañas Simple -->
+<script>
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('bg-primary', 'text-on-primary', 'font-semibold', 'shadow-sm');
+          b.classList.add('text-on-surface-variant');
+        });
+        btn.classList.add('bg-primary', 'text-on-primary', 'font-semibold', 'shadow-sm');
+        btn.classList.remove('text-on-surface-variant');
+      });
+    });
+
+    const searchInput = document.getElementById('search-ear-tag');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+          const text = row.textContent.toLowerCase();
+          if (!query || text.includes(query)) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      });
+    }
+  </script>
+</div></main><footer class="w-full h-12 bg-surface-container-low px-gutter-desktop flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div>Ganado81 v2.4 • Sistema de Gestión Ganadera Sonora-Chihuahua</div><div class="flex items-center gap-space-lg"><span class="inline-flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary"></span>Modo Demostrativo Activo</span><span>Soporte Técnico de Campo</span></div></footer></div></body></html>

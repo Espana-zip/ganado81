@@ -1,0 +1,18 @@
+# Copiar a .avh/ssh-config y completar SOLO localmente; no poner secretos aqui.
+Host avh-proxy
+    HostName HOST_PROXY_CORELLIUM
+    User USUARIO_PROXY_CORELLIUM
+Host avh-vm
+    HostName IP_GUEST_CORELLIUM
+    User pi
+    ProxyJump avh-proxy
+Host *
+    IdentityFile ~/.ssh/corellium_ed25519
+    IdentitiesOnly yes
+    BatchMode yes
+    StrictHostKeyChecking yes
+    UpdateHostKeys no
+    ForwardAgent no
+    ConnectTimeout 15
+    ControlMaster no
+    ControlPath none

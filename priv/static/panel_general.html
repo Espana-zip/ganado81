@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary": "#ffffff", "on-primary": "#ffffff", "secondary": "#8b5008", "secondary-container": "#ffb064", "surface-variant": "#e3e2df", "on-secondary-container": "#764200", "surface-container": "#efeeeb", "primary": "#082e21", "on-primary-fixed-variant": "#2b4d3f", "inverse-primary": "#a9cfbc", "on-tertiary-container": "#91afa0", "on-tertiary-fixed": "#032016", "on-tertiary-fixed-variant": "#304c40", "surface": "#faf9f6", "on-error-container": "#93000a", "inverse-on-surface": "#f2f1ee", "surface-tint": "#426656", "surface-bright": "#faf9f6", "on-surface": "#1a1c1a", "surface-container-low": "#f4f3f0", "secondary-fixed-dim": "#ffb875", "on-background": "#1a1c1a", "error-container": "#ffdad6", "tertiary": "#102d22", "on-error": "#ffffff", "primary-fixed-dim": "#a9cfbc", "tertiary-container": "#274337", "surface-container-high": "#e9e8e5", "tertiary-fixed-dim": "#aecebe", "tertiary-fixed": "#caead9", "primary-fixed": "#c4ebd8", "on-secondary-fixed-variant": "#6b3b00", "secondary-fixed": "#ffdcc0", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "surface-dim": "#dbdad7", "primary-container": "#214436", "background": "#faf9f6", "outline": "#717974", "on-secondary-fixed": "#2d1600", "on-primary-container": "#8bb19f", "inverse-surface": "#2f312f", "on-surface-variant": "#414844", "error": "#ba1a1a", "surface-container-highest": "#e3e2df", "outline-variant": "#c1c8c3", "on-primary-fixed": "#002116" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter": "1rem", "gutter-desktop": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "margin-tablet": "1.5rem", "margin-desktop": "2.5rem", "space-xs": "0.25rem", "margin": "1rem", "space-md": "0.75rem", "space-lg": "1.25rem" }, "fontFamily": { "headline-lg-mobile": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ], "headline-xl": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "label-md": [ "Inter" ], "body-md": [ "Inter" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "headline-lg": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "data-metric": [ "Plus Jakarta Sans" ], "label-sm": [ "Inter" ], "data-tabular": [ "Inter" ] }, "fontSize": { "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "headline-sm": [ "18px", { "lineHeight": "24px", "fontWeight": "600" } ], "headline-xl": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-md": [ "22px", { "lineHeight": "28px", "fontWeight": "600" } ], "label-md": [ "13px", { "lineHeight": "18px", "fontWeight": "500" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-xl-mobile": [ "30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "data-metric": [ "28px", { "lineHeight": "34px", "fontWeight": "700" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "data-tabular": [ "14px", { "lineHeight": "20px", "fontWeight": "500" } ] } } } };</script><link rel="stylesheet" href="/static/app.css"/><title>Ganado81</title></head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen" data-page="panel_general"><header class="fixed top-0 left-0 right-0 h-16 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-16 px-gutter-desktop flex items-center justify-between gap-space-lg"><button id="mobile-menu" aria-label="Abrir navegación" aria-controls="sidebar" aria-expanded="false" class="rounded-lg bg-surface-container p-space-sm"><span class="material-symbols-outlined">menu</span></button><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-md"><img alt="Ganado81 Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W9SQK7xgJAoMTCD2WdWlV3L3FOH1jfJvqblF8ZMBiRgpdYTYI0QJYMjX9BO0CegPK8Ae_OhpWNkBFkbm5hW7n6Jd0_5L0AXHKzHxrKKYrCrGgvZSxgXixWX7NM77qdMkQlfyCwL-u-fNRz3GjRkPwvxy5uBeNtE9MzGCkU7rroo-DRow8P1kDcSEBOC3LVFX3nfsF2INZofQ7WaVS-iggE3qxUWTuiL9z8fOmKuCTCWQ"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Ganado81</span></div><div class="h-6 w-px bg-surface-variant hidden md:block"></div><button class="hidden md:flex items-center gap-space-sm px-space-md py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors text-left" data-unavailable="Configuración de rancho"><span class="material-symbols-outlined text-secondary text-[18px]">landscape</span><div><div class="font-label-sm text-label-sm text-secondary uppercase font-semibold leading-none">Rancho Activo</div><div class="font-body-sm text-body-sm text-on-surface font-medium leading-tight" id="rancho">Rancho sin configurar • MVP escolar</div></div><span class="material-symbols-outlined text-on-surface-variant text-[16px]">expand_more</span></button><div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="hidden sm:inline" id="demo-global">API en memoria • DEMO-* ficticios</span><span class="sm:hidden">Demo</span></div></div><div class="flex items-center gap-space-md"><button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors" id="sync"><span class="material-symbols-outlined text-[16px]">sync</span><span class="hidden lg:inline">Sincronizar Campo</span></button><div class="relative"><button aria-label="Alertas sanitarias y operativas" class="w-9 h-9 rounded-lg flex items-center justify-center bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" id="nav-alertas"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-secondary text-on-secondary text-[10px] font-bold flex items-center justify-center" id="nav-alertas-count">—</span></button></div><div class="flex items-center gap-space-sm pl-space-sm"><div class="text-right hidden sm:block"><div class="font-label-md text-label-md text-on-surface font-medium leading-tight" id="usuario">Usuario local (sin autenticación)</div><div class="font-label-sm text-label-sm text-on-surface-variant leading-none">Administrador Ganadero</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex flex-col justify-between py-space-lg" id="sidebar"><div class="flex flex-col gap-space-xs px-space-md"><div class="px-space-md py-space-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Módulos Operativos</div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_1px_4px_rgba(33,68,54,0.1)]"><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm transition-colors bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_1px_4px_rgba(33,68,54,0.1)]" data-path="panel-general" href="/"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-label-md text-label-md">Panel General</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="ficha-de-animal" href="/ficha"><span class="material-symbols-outlined text-[20px]">badge</span><span class="font-label-md text-label-md">Ficha de Animal</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="historial-y-alertas" href="/historial"><span class="material-symbols-outlined text-[20px]">medical_services</span><span class="font-label-md text-label-md">Historial y Alertas</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="potreros" href="/#potreros"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-md text-label-md">Potreros</span></div><span class="font-label-sm text-label-sm px-space-xs rounded bg-surface-variant text-on-surface font-semibold" id="nav-potreros">—</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reportes-siniiga" href="#" data-unavailable="Reportes SINIIGA"><span class="material-symbols-outlined text-[20px]">assignment_turned_in</span><span class="font-label-md text-label-md">Reportes SINIIGA</span></a></nav></div><div class="px-space-md"><div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs text-secondary"><span class="material-symbols-outlined text-[16px]">wifi_tethering</span><span class="font-label-sm text-label-sm font-semibold uppercase">Modo de Campo</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Captura conectada al servidor local. Sin modo offline.</p></div></div></aside><div class="pl-64" id="app-shell"><main class="w-full pt-16 min-h-[calc(100vh-3rem)] px-gutter-desktop py-space-lg bg-surface" id="main"><div id="app-status" role="status" class="p-space-md rounded-lg bg-surface-container">Conectando con el backend…</div><noscript>Se requiere JavaScript para consultar los datos del backend.</noscript><div class="flex flex-col w-full gap-space-xl" id="page-content" hidden="hidden">
+
+<section class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold tracking-wider uppercase" id="panel-rancho">Proyecto 81 • Hato local</span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1" id="panel-date">Fecha del servidor local</span>
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">Captura manual conectada</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+        Panel de Control Ganadero
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+        Monitoreo biométrico, rotación de pastizales y estatus zoosanitario por UGM en tiempo real.
+      </p>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm">
+<div class="px-space-md py-space-sm rounded-lg bg-surface-container flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">science</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase leading-none">Ambiente de Prueba</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant" id="panel-source">API en memoria; DEMO-* ficticios</span>
+</div>
+</div>
+<button class="px-space-lg py-space-md rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container transition-all flex items-center justify-center gap-space-xs shadow-md shadow-primary/10" id="btnRegistrar">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Registrar Ingreso / Pesaje</span>
+</button>
+</div>
+</section>
+
+<div class="w-full px-space-md py-space-sm rounded-lg bg-secondary-fixed/40 flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">info</span>
+<p class="font-body-sm text-body-sm text-on-secondary-fixed">Datos del backend local en memoria. Los aretes DEMO-* son ficticios. Un reinicio pierde los registros; no hay persistencia.</p>
+</div>
+<span class="hidden md:inline-block font-label-sm text-label-sm text-secondary uppercase font-bold tracking-wider">Modo Sonora v2.4</span>
+</div>
+
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary"></div>
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase font-semibold">Total Ganado Registrado</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-outline font-semibold">API LOCAL</span>
+</div>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-data-metric text-data-metric text-on-surface font-bold tracking-tight" id="kpi-total">—</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center" id="kpi-demo"></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Censo registrado en el gen_server</p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-space-sm rounded-lg flex justify-between text-center font-data-tabular text-data-tabular">
+<div>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Sanos</span>
+<span class="font-semibold text-primary" id="health-sano">—</span>
+</div>
+<div class="w-px bg-surface-variant"></div>
+<div>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Enfermos</span>
+<span class="font-semibold text-primary" id="health-enfermo">—</span>
+</div>
+<div class="w-px bg-surface-variant"></div>
+<div>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Tratamiento</span>
+<span class="font-semibold text-primary" id="health-en_tratamiento">—</span>
+</div>
+<div class="w-px bg-surface-variant"></div>
+<div>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Cuarentena</span>
+<span class="font-semibold text-primary" id="health-cuarentena">—</span>
+</div>
+</div>
+</div>
+
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase font-semibold">En Tratamiento Activo</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container font-label-sm text-label-sm text-on-error-container font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Alerta
+          </span>
+</div>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-data-metric text-data-metric text-on-surface font-bold tracking-tight" id="kpi-treatment">—</span>
+<span class="font-label-md text-label-md text-error font-medium">cabezas</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Requieren seguimiento en bitácora</p>
+</div>
+<div class="mt-space-md flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface-variant flex items-center gap-1">Enfermos:</span>
+<span class="font-semibold text-on-surface" id="kpi-sick">—</span>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface-variant flex items-center gap-1">Cuarentena:</span>
+<span class="font-semibold text-error" id="kpi-quarantine">—</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-error h-full rounded-full" style="width:0%" id="treatment-bar"></div>
+</div>
+</div>
+</div>
+
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary"></div>
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase font-semibold">Peso Promedio General</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-outline font-semibold">BÁSCULA</span>
+</div>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-data-metric text-data-metric text-on-surface font-bold tracking-tight" id="kpi-weight">—</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">kg</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold ml-auto flex items-center" id="weight-delta"></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Promedio de los pesos actuales registrados</p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">speed</span>
+<div>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Ganancia Diaria (GDP)</span>
+<span class="font-data-tabular text-data-tabular font-bold text-primary" id="kpi-gmd">—</span>
+</div>
+</div>
+<span class="text-label-sm font-label-sm px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-semibold" id="gmd-note">Calculado</span>
+</div>
+</div>
+
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary-container"></div>
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase font-semibold">Potreros con Ganado</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Aforo no registrado</span>
+</div>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-data-metric text-data-metric text-on-surface font-bold tracking-tight" id="kpi-pastures">—</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">potreros registrados</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1" id="pastures-note">—</p>
+</div>
+<div class="mt-space-md flex flex-col gap-1.5">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all" style="width:0%"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-on-surface-variant">
+<span id="capacity-note">Capacidad: no registrada</span>
+<span class="font-semibold text-primary" id="pastures-health"></span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="flex flex-col gap-space-md" id="potreros">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">grid_view</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary" id="pastures-title">Estado y Carga de Potreros</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Agrupación por potrero actual; aforo y forraje no registrados</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">Barra: proporción del hato, no capacidad del potrero</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md" id="pastures-grid"><template id="pasture-template"><div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between gap-space-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold" data-field="sector">—</span>
+<h3 class="font-headline-sm text-headline-sm text-primary" data-field="name">—</h3>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold" data-field="share">—</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-md text-label-md text-on-surface">
+<span data-field="count">—</span>
+<span class="font-semibold text-secondary" data-field="status">—</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width:0%" data-field="bar"></div>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span data-field="weight">—</span>
+<span data-field="capacity">—</span>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-container font-medium" data-field="animals">—</span>
+<button class="px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-colors" data-field="open">Ver animales →</button>
+</div>
+</div>
+
+</template></div>
+</section>
+
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[24px]">crisis_alert</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Alertas Recientes del Rancho</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Alertas por pérdida de peso generadas por el backend</p>
+</div>
+</div>
+
+<div class="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0" id="filterContainer">
+<button class="filter-btn active px-space-sm py-1 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-semibold transition-colors" data-filter="todas">Todas</button>
+<button class="filter-btn px-space-sm py-1 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-semibold transition-colors" data-filter="alta">Altas</button>
+<button class="filter-btn px-space-sm py-1 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-semibold transition-colors" data-filter="media">Medias</button>
+<button class="filter-btn px-space-sm py-1 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-semibold transition-colors" data-filter="peso">Peso</button>
+</div>
+</div>
+
+<div class="flex flex-col gap-space-sm" id="alertsList"><template id="alert-template"><div class="alert-item sanitarias bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs relative overflow-hidden transition-all hover:bg-surface-bright">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error" data-field="stripe"></div>
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold flex items-center gap-1" data-field="severity"></span>
+<span class="font-data-tabular text-data-tabular font-bold text-primary" data-field="arete">—</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant" data-field="potrero">—</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-medium" data-field="date">—</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mt-1">
+<div class="flex flex-col">
+<p class="font-body-md text-body-md text-on-surface font-medium" data-field="message"></p>
+<p class="font-body-sm text-body-sm text-on-surface-variant" data-field="note"></p>
+</div>
+<button class="self-start sm:self-center px-space-md py-1.5 rounded-lg bg-error-container text-on-error-container hover:bg-error hover:text-on-error font-label-sm text-label-sm font-semibold transition-colors shrink-0" data-field="open">Ver ficha</button>
+</div>
+</div>
+
+</template></div>
+</div>
+
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Distribución por Salud</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="health-note">—</p>
+</div>
+<span class="material-symbols-outlined text-outline text-[22px]">pie_chart</span>
+</div>
+
+<div class="flex items-center justify-center py-space-sm">
+<div class="relative w-44 h-44 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#efeeeb" stroke-width="12"></circle>
+
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#082e21" stroke-dasharray="0 239" stroke-dashoffset="0" stroke-width="12" id="donut-0"></circle>
+
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#214436" stroke-dasharray="0 239" stroke-dashoffset="-104" stroke-width="12" id="donut-1"></circle>
+
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#8b5008" stroke-dasharray="0 239" stroke-dashoffset="-176" stroke-width="12" id="donut-2"></circle>
+
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#ffb064" stroke-dasharray="0 239" stroke-dashoffset="-223" stroke-width="12" id="donut-3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="health-total">—</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Cabezas</span>
+</div>
+</div>
+</div>
+
+<div class="flex flex-col gap-space-sm font-label-md text-label-md">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="flex items-center gap-1.5 text-on-surface">Sanos</span>
+<span class="font-data-tabular text-data-tabular font-bold text-on-surface" id="distribution-sano">—</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width:0%" id="distribution-bar-0"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="flex items-center gap-1.5 text-on-surface">Enfermos</span>
+<span class="font-data-tabular text-data-tabular font-bold text-on-surface" id="distribution-enfermo">—</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full" style="width:0%" id="distribution-bar-1"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="flex items-center gap-1.5 text-on-surface">En tratamiento</span>
+<span class="font-data-tabular text-data-tabular font-bold text-on-surface" id="distribution-en_tratamiento">—</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width:0%" id="distribution-bar-2"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="flex items-center gap-1.5 text-on-surface">Cuarentena</span>
+<span class="font-data-tabular text-data-tabular font-bold text-on-surface" id="distribution-cuarentena">—</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full" style="width:0%" id="distribution-bar-3"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Estado del Botiquín Veterinario</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Inventario no disponible en el modelo del MVP</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-[22px]">medical_services</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">vaccines</span>
+<div>
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Vacuna Triple Aftosa / Clostridial</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">No registrado</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">No registrado</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]">healing</span>
+<div>
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Ivermectina al 3.15% (Desparasitante)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">No registrado</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">No registrado</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">shield</span>
+<div>
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Aretes de Identificación SINIIGA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">No registrado</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">No registrado</span>
+</div>
+</div>
+<button class="w-full py-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-space-xs" data-unavailable="Inventario veterinario">
+<span class="material-symbols-outlined text-[18px]">inventory</span>
+          Ver Inventario Médico Completo
+        </button>
+</div>
+</div>
+</section>
+
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm hidden flex items-center justify-center p-4" id="modalRegistro" role="dialog" aria-modal="true" aria-label="Registro de báscula">
+<div class="bg-surface-container-lowest rounded-xl max-w-lg w-full p-space-xl shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">scale</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Nuevo Registro de Báscula</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Arete existente: nuevo pesaje. Arete nuevo: alta con salud sano. Potrero solo se guarda al dar de alta.</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface" id="btnCerrarModal" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form id="form-registro" class="flex flex-col gap-space-md"><div class="flex flex-col gap-space-sm">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold mb-1" for="registro-arete">Arete SINIIGA / RFID</label>
+<input class="w-full px-space-md py-space-sm rounded-lg bg-surface-container border-0 font-data-tabular text-data-tabular text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" type="text" id="registro-arete" maxlength="32" required="required">
+</div>
+<div class="grid grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold mb-1" for="registro-peso">Peso Actual (kg)</label>
+<input class="w-full px-space-md py-space-sm rounded-lg bg-surface-container border-0 font-data-metric text-headline-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" type="number" id="registro-peso" min="0.01" max="2000" step="any" required="required">
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold mb-1" for="registro-potrero">Destino / Potrero</label>
+<input id="registro-potrero" required="required" maxlength="64" placeholder="Potrero para un animal nuevo" class="w-full px-space-md py-space-sm rounded-lg bg-surface-container border-0 font-label-md text-label-md"></div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold mb-1">Condición Corporal / Observación</label>
+<input class="w-full px-space-md py-space-sm rounded-lg bg-surface-container border-0 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" placeholder="No disponible en este MVP; no se guarda" type="text" disabled="disabled">
+</div>
+</div>
+<p id="registro-error" role="alert" class="text-error"></p><div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md" id="btnCancelarModal" type="button">
+          Cancelar
+        </button>
+<button class="px-space-lg py-space-sm rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md font-semibold flex items-center gap-1" id="btnGuardarRegistro" type="submit">Guardar en backend</button>
+</div>
+</form></div>
+</div>
+
+<div class="w-full py-space-md border-t-0 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-space-xs font-body-sm text-body-sm text-outline">
+<div class="flex items-center gap-space-xs justify-center">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span id="data-note">DEMO-* son ficticios; los demás registros se capturan manualmente.</span>
+</div>
+<span id="last-sync"></span>
+</div>
+</div>
+</main><footer class="w-full h-12 bg-surface-container-low px-gutter-desktop flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div>Ganado81 v2.4 • Sistema de Gestión Ganadera Sonora-Chihuahua</div><div class="flex items-center gap-space-lg"><span class="inline-flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary"></span>Modo Demostrativo Activo</span><span>Soporte Técnico de Campo</span></div></footer></div><script src="/static/app.js" defer="defer"> </script></body></html>

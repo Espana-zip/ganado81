@@ -1,0 +1,1 @@
+Proyecto 81 — Ganado81: manual académico de Erlang/OTP 27, Cowboy y Stitch en Corellium ARM64; instalación, uso, 38 pruebas EUnit y evidencias de supervisión.

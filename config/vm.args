@@ -1,0 +1,4 @@
+## Plantilla publica. No contiene cookie, nombre de nodo ni destinos remotos.
+## El servicio AVH usa deploy/avh/arrancar.sh, no este archivo de relx.
+## Distribucion Erlang deshabilitada. No introducir secretos aqui.
++K true

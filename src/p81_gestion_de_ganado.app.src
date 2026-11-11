@@ -1,0 +1,8 @@
+{application, p81_gestion_de_ganado, [
+  {description, "Gestion de ganado"},
+  {vsn, "0.1.0"},
+  {registered, [p81_gestion_de_ganado_sup, p81_gestion_de_ganado_server]},
+  {mod, {p81_gestion_de_ganado_app, []}},
+  {applications, [kernel, stdlib, cowboy, recon]},
+  {env, []}
+]}.

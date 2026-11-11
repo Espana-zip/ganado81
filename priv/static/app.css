@@ -1,0 +1,35 @@
+/* Solo estados de datos y adaptación móvil del shell fijo del export Stitch. */
+[hidden] { display: none !important; }
+body { font-variant-numeric: tabular-nums slashed-zero; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #214436; outline-offset: 3px;
+}
+#app-status { margin-top: 4rem; }
+#toast {
+  position: fixed; bottom: 1.25rem; right: 1.25rem; max-width: min(28rem, 90vw);
+  z-index: 100; padding: .75rem 1.25rem; border-radius: .5rem;
+  background: #214436; color: #fff; box-shadow: 0 4px 12px -2px #21443622;
+}
+#mobile-menu { display: none; }
+#tag-number, #animal-arete { overflow-wrap: anywhere; }
+#app-shell, #main, #page-content > * { min-width: 0; }
+[data-field="animals"] { overflow-wrap: anywhere; min-width: 0; }
+[role="dialog"] { z-index: 70; overflow-y: auto; }
+[role="dialog"] > div { max-height: calc(100dvh - 2rem); overflow-y: auto; }
+@media (max-width: 767px) {
+  #mobile-menu { display: inline-flex; }
+  #sidebar { display: none; }
+  .nav-open #sidebar { display: flex; width: min(260px, 90vw); }
+  #app-shell { padding-left: 0; }
+  #main { padding: 5rem 1rem 1rem; min-width: 0; }
+  header > div { padding-left: .75rem !important; padding-right: .75rem !important; gap: .5rem !important; }
+  header > div > div { gap: .5rem !important; }
+  header img { display: none; }
+  footer { height: auto !important; min-height: 3rem; flex-wrap: wrap; gap: .5rem; padding: 1rem; }
+  #animal-arete { font-size: 30px; line-height: 38px; }
+  #app-status { margin-top: 0; }
+  #pagination { flex-wrap: wrap; }
+  #pagination-count { min-width: 0; }
+  #events-pagination-controls { flex-wrap: wrap; justify-content: center; }
+}
