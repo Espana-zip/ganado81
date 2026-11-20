@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>Rancho Digital 81</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f5f1;
+      color: #213329;
+    }
+
+    header {
+      background: #173c2b;
+      color: white;
+      padding: 32px 7%;
+    }
+
+    header h1 { margin: 0 0 8px; }
+
+    header p {
+      color: #d7e8dc;
+      margin: 0;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .metricas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .metrica, .tarjeta, .grafica {
+      background: white;
+      border: 1px solid #dfe7df;
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .metrica strong {
+      display: block;
+      font-size: 30px;
+      color: #17603c;
+    }
+
+    .metrica span {
+      font-size: 13px;
+      color: #647568;
+    }
+
+    .escenarios {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .tarjeta h3 { margin-top: 0; }
+
+    .resultado {
+      color: #17603c;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .evidencia {
+      background: #f4f7f4;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .grafica { margin-top: 25px; }
+
+    .grafica img {
+      display: block;
+      width: 100%;
+      max-width: 760px;
+      margin: 15px auto;
+    }
+
+    select, button {
+      padding: 10px 14px;
+      border: 1px solid #b5c8ba;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      background: #17603c;
+      color: white;
+      cursor: pointer;
+    }
+
+    .aviso {
+      font-size: 13px;
+      color: #647568;
+      margin-top: 20px;
+    }
+
+    @media(max-width: 700px) {
+      .escenarios {
+        grid-template-columns: 1fr;
+      }
+
+      .metricas {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .metrica { padding: 12px; }
+      .metrica strong { font-size: 23px; }
+
+      header { padding: 25px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Rancho Digital 81</h1>
+    <p>Gemelo digital con SWI-Prolog,
+       Python y Janus</p>
+  </header>
+
+  <main>
+    <section class="metricas">
+      <div class="metrica">
+        <strong>12</strong>
+        <span>Registros del rancho</span>
+      </div>
+
+      <div class="metrica">
+        <strong>3</strong>
+        <span>Lotes simulados</span>
+      </div>
+
+      <div class="metrica">
+        <strong>4</strong>
+        <span>Potreros</span>
+      </div>
+    </section>
+
+    <h2>Decisiones del gemelo digital</h2>
+
+    <section class="escenarios"
+             id="escenarios">
+      Cargando decisiones...
+    </section>
+
+    <section class="grafica">
+      <h2>Historial de pesajes</h2>
+
+      <label for="animal">Seleccionar animal:</label>
+
+      <select id="animal">
+        <option value="r01">Animal r01</option>
+        <option value="r02">Animal r02</option>
+        <option value="r08">Animal r08</option>
+        <option value="r09">Animal r09</option>
+      </select>
+
+      <button id="actualizar">
+        Actualizar gráfica
+      </button>
+
+      <p id="mensajeGrafica"></p>
+      <img id="grafica"
+           alt="Historial de pesajes">
+
+    </section>
+
+    <p class="aviso">
+      Proyecto académico con datos ficticios.
+      Las decisiones requieren validación humana;
+      no representan diagnósticos veterinarios
+      ni autorizaciones oficiales.
+    </p>
+  </main>
+
+  <script>
+    async function cargarEscenarios() {
+      const contenedor =
+        document.getElementById("escenarios");
+
+      try {
+        const respuesta =
+          await fetch("/api/escenarios");
+
+        if (!respuesta.ok) {
+          throw new Error("Error HTTP " +
+                          respuesta.status);
+        }
+
+        const datos = await respuesta.json();
+        contenedor.replaceChildren();
+
+        for (const item of datos.escenarios) {
+          const tarjeta =
+            document.createElement("article");
+
+          tarjeta.className = "tarjeta";
+
+          const titulo =
+            document.createElement("h3");
+          titulo.textContent =
+            item.id + ". " + item.nombre;
+
+          const resultado =
+            document.createElement("p");
+          resultado.className = "resultado";
+          resultado.textContent =
+            item.conclusion;
+
+          const evidencia =
+            document.createElement("div");
+          evidencia.className = "evidencia";
+          evidencia.textContent =
+            item.evidencia.join("\n");
+
+          tarjeta.append(
+            titulo, resultado, evidencia
+          );
+
+          contenedor.appendChild(tarjeta);
+        }
+
+        if (datos.escenarios.length === 0) {
+          contenedor.textContent =
+            "No hay escenarios disponibles.";
+        }
+
+      } catch (error) {
+        contenedor.textContent =
+          "No se pudieron consultar las decisiones: "
+          + error.message;
+      }
+    }
+
+    function actualizarGrafica() {
+      const animal =
+        document.getElementById("animal").value;
+
+      const grafica =
+        document.getElementById("grafica");
+
+      const mensaje =
+        document.getElementById("mensajeGrafica");
+
+      grafica.style.display = "none";
+      mensaje.textContent = "Generando gráfica...";
+
+      grafica.onload = () => {
+        grafica.style.display = "block";
+        mensaje.textContent = "";
+      };
+
+      grafica.onerror = () => {
+        mensaje.textContent =
+          "No se pudo generar la gráfica.";
+      };
+
+      grafica.src =
+        "/grafica/pesajes?animal="
+        + encodeURIComponent(animal);
+    }
+
+    document.getElementById("actualizar")
+      .addEventListener("click", actualizarGrafica);
+
+    cargarEscenarios();
+    actualizarGrafica();
+  </script>
+</body>
+</html>
