@@ -12,9 +12,11 @@
     aplicacion/3,
     aptitud/3,
     lectura/4,
-    evento/4
+    evento/4,
+    estancia/4
 ]).
 :- discontiguous evento/4.
+:- discontiguous campana/2.
 
 % PROYECTO 81 - GEMELO DIGITAL
 % Escenario ficticio para pruebas academicas.
@@ -201,3 +203,26 @@ aptitud(p4, agua, suficiente).
 % Potrero disponible y sin descanso
 % programado en este escenario.
 estado_potrero(p4, disponible).
+
+
+% HISTORIAL TEMPORAL DEL RANCHO
+% estancia(Lote, Potrero, Desde, Hasta).
+%
+% Datos ficticios del escenario.
+
+estancia(l1, p1, 0, 60).
+estancia(l2, p2, 0, 60).
+
+% Para l3 conocemos su ubicacion declarada,
+% pero no tenemos historial de estancias
+% verificado en este modelo.
+
+
+% Campanas adicionales del escenario.
+% Fechas y nombres ficticios.
+campana(campana_demo_2, 20).
+campana(campana_demo_3, 30).
+
+% Existe una solicitud de guia para l3,
+% pero aun no una autorizacion confirmada.
+evento(l3, guia_transito, solicitada, 58).

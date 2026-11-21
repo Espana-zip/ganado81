@@ -421,3 +421,175 @@ test(decision_retener_lote1) :-
     memberchk(brote_documentado, Motivos).
 
 :- end_tests(salida).
+
+
+
+:- begin_tests(exposicion_temporal).
+
+:- use_module('../reglas.pl').
+
+test(cadena_del_foco_al_lote2) :-
+    once(situacion(l2, cadena_exposicion, E)),
+    memberchk(
+        cadena([
+            foco(r04),
+            lote(l1),
+            potrero(p1),
+            agua_compartida(p1, p2),
+            lote(l2)
+        ]),
+        E
+    ).
+
+test(animales_expuestos_lote2) :-
+    once(situacion(l2, cadena_exposicion, E)),
+    memberchk(
+        animales_expuestos([r05,r06,r07,r08]),
+        E
+    ).
+
+test(campanas_en_cadena) :-
+    once(situacion(l2, cadena_exposicion, E)),
+    memberchk(
+        estado_campanas([
+            estado_campana(r05, registrada),
+            estado_campana(r06, sin_constancia),
+            estado_campana(r07, sin_constancia),
+            estado_campana(r08, sin_constancia)
+        ]),
+        E
+    ).
+
+test(historial_desconocido_lote3) :-
+    once(situacion(
+        l3,
+        contacto_no_determinable,
+        E
+    )),
+    memberchk(estado(no_se_sabe), E).
+
+test(decision_lote2_con_cadena) :-
+    once(decide(l2, aislar_por_precaucion, E)),
+    memberchk(
+        animales_expuestos([r05,r06,r07,r08]),
+        E
+    ).
+
+:- end_tests(exposicion_temporal).
+
+
+
+:- begin_tests(evaluacion_potreros).
+
+:- use_module('../reglas.pl').
+
+test(p2_descartado_por_pasto_y_ocupacion) :-
+    once(situacion(l3, evaluacion_destino(p2), E)),
+    memberchk(estado(no_apto), E),
+    memberchk(bloqueos(B), E),
+    memberchk(pasto_insuficiente, B),
+    memberchk(ocupado_por(l2), B).
+
+test(p2_agua_sin_verificar) :-
+    once(situacion(l3, evaluacion_destino(p2), E)),
+    memberchk(falta_verificar(F), E),
+    memberchk(agua, F).
+
+test(p4_destino_apto) :-
+    once(situacion(l3, evaluacion_destino(p4), E)),
+    memberchk(estado(apto), E),
+    memberchk(bloqueos([]), E),
+    memberchk(falta_verificar([]), E).
+
+test(l1_sin_destino_confirmado) :-
+    once(situacion(l1, sin_destino_confirmado, E)),
+    memberchk(estado(no_apto), E).
+
+test(l3_tiene_destino, [fail]) :-
+    situacion(l3, sin_destino_confirmado, _).
+
+:- end_tests(evaluacion_potreros).
+
+
+:- begin_tests(elegibilidad_salida).
+:- use_module('../reglas.pl').
+
+test(l3_retenido_por_arete) :-
+    once(situacion(l3, evaluacion_salida, E)),
+    memberchk(estado(no_puede_salir), E),
+    memberchk(impedimentos(B), E),
+    memberchk(arete_faltante(r10), B).
+
+test(l3_guia_sin_autorizacion) :-
+    once(situacion(l3, evaluacion_salida, E)),
+    memberchk(falta_verificar(F), E),
+    memberchk(
+        guia_sin_autorizacion_verificada,
+        F
+    ).
+
+test(l2_campana_pendiente) :-
+    once(situacion(l2, evaluacion_salida, E)),
+    memberchk(falta_verificar(F), E),
+    memberchk(
+        campana_sin_constancia(r06, campana_demo),
+        F
+    ).
+
+test(l2_identidad_pendiente) :-
+    once(situacion(l2, evaluacion_salida, E)),
+    memberchk(falta_verificar(F), E),
+    memberchk(
+        identidad_pendiente(r07, r03),
+        F
+    ).
+
+test(l3_contacto_sin_historial) :-
+    once(situacion(l3, evaluacion_salida, E)),
+    memberchk(falta_verificar(F), E),
+    memberchk(
+        historial_contacto_no_verificado,
+        F
+    ).
+
+test(decision_salida_l3) :-
+    once(decide(l3, salida(no_puede_salir), E)),
+    memberchk(estado(no_puede_salir), E).
+
+:- end_tests(elegibilidad_salida).
+
+
+:- begin_tests(estados_salida).
+:- use_module('../reglas.pl').
+
+test(salida_bloqueada) :-
+    estado_salida(
+        [arete_faltante(r10)],
+        [guia_sin_autorizacion_verificada],
+        no_puede_salir
+    ).
+
+test(salida_desconocida) :-
+    estado_salida(
+        [],
+        [guia_sin_autorizacion_verificada],
+        no_se_sabe
+    ).
+
+test(salida_con_requisitos_completos) :-
+    estado_salida(
+        [],
+        [],
+        puede_salir
+    ).
+
+test(lote3_continua_retenido) :-
+    once(
+        decide(
+            l3,
+            salida(no_puede_salir),
+            _
+        )
+    ).
+
+:- end_tests(estados_salida).

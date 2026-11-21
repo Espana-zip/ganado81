@@ -1,8 +1,8 @@
-
 :- module(reglas, [
     situacion/3,
     estado_caida/3,
-    decide/3
+    decide/3,
+    estado_salida/3
 ]).
 
 :- use_module('hechos.pl').
@@ -330,6 +330,81 @@ situacion(Lote, sequia_potrero, E) :-
         estado(requiere_revision)
     ].
 
+
+% Verificar presencia en un potrero
+% durante una fecha simulada.
+presente_en(Lote, Potrero, Dia) :-
+    estancia(Lote, Potrero, Desde, Hasta),
+    Desde =< Dia,
+    Dia =< Hasta.
+
+% Reconstruir una cadena de exposicion
+% por agua compartida en la fecha del brote.
+situacion(Lote, cadena_exposicion, E) :-
+    evento(
+        Foco,
+        brote_sanitario,
+        confirmado_en_escenario,
+        Dia
+    ),
+    lote(LoteFoco, Foco),
+
+    presente_en(LoteFoco, P1, Dia),
+    presente_en(Lote, P2, Dia),
+    Lote \== LoteFoco,
+
+    conexion_agua(P1, P2),
+
+    findall(
+        Animal,
+        lote(Lote, Animal),
+        Animales
+    ),
+
+    findall(
+        estado_campana(Animal, Estado),
+        (
+            member(Animal, Animales),
+            (
+                situacion(
+                    Animal,
+                    campana_registrada(campana_demo),
+                    _
+                )
+            ->
+                Estado = registrada
+            ;
+                Estado = sin_constancia
+            )
+        ),
+        Campanas
+    ),
+
+    E = [
+        cadena([
+            foco(Foco),
+            lote(LoteFoco),
+            potrero(P1),
+            agua_compartida(P1, P2),
+            lote(Lote)
+        ]),
+        animales_expuestos(Animales),
+        estado_campanas(Campanas),
+        estado(precaucion)
+    ].
+
+% Si falta el historial temporal,
+% no podemos descartar la exposicion.
+situacion(Lote, contacto_no_determinable, E) :-
+    setof(Animal, lote(Lote, Animal), _),
+    \+ estancia(Lote, _, _, _),
+
+    E = [
+        estado(no_se_sabe),
+        falta(historial_estancias(Lote))
+    ].
+
+
 % -----------------------------------------
 % RUTA DE PASTOREO PROPUESTA
 % -----------------------------------------
@@ -468,8 +543,13 @@ decide(Lote, aislar_por_brote, Evidencia) :-
     situacion(Lote, brote_documentado, Evidencia).
 
 % Precaucion por conexion de agua.
+
 decide(Lote, aislar_por_precaucion, Evidencia) :-
-    situacion(Lote, exposicion_por_agua, Evidencia).
+    situacion(
+        Lote,
+        cadena_exposicion,
+        Evidencia
+    ).
 
 
 % Encontrar un foco documentado y vigente
@@ -697,3 +777,230 @@ decide(Lote, mover_a(Destino, Ruta), E) :-
         E
     ),
     memberchk(ruta(Ruta), E).
+
+
+
+% -----------------------------------------
+% EVALUACION DE DESTINOS DE PASTOREO
+% -----------------------------------------
+
+% Motivos comprobados para descartar.
+
+bloqueo_destino(L, P, origen_actual) :-
+    ubicacion(L, P, _).
+
+bloqueo_destino(L, P, ocupado_por(Otro)) :-
+    ubicacion(Otro, P, _),
+    Otro \== L.
+
+bloqueo_destino(_, P, pasto_insuficiente) :-
+    aptitud(P, pasto, insuficiente).
+
+bloqueo_destino(_, P, agua_insuficiente) :-
+    aptitud(P, agua, insuficiente).
+
+bloqueo_destino(_, P, potrero_en_descanso) :-
+    estado_potrero(P, descanso).
+
+bloqueo_destino(_, P, restriccion_sanitaria) :-
+    potrero_restringido(P).
+
+bloqueo_destino(L, _, lote_restringido) :-
+    lote_restringido(L).
+
+bloqueo_destino(L, P, sin_ruta_segura) :-
+    ubicacion(L, Origen, _),
+    \+ ruta_segura(Origen, P, _).
+
+% Datos que no estan registrados.
+% Falta de dato NO significa insuficiencia.
+
+falta_destino(P, pasto) :-
+    \+ aptitud(P, pasto, _).
+
+falta_destino(P, agua) :-
+    \+ aptitud(P, agua, _).
+
+falta_destino(P, estado_potrero) :-
+    \+ estado_potrero(P, _).
+
+% Tres estados posibles para un destino.
+
+
+% -----------------------------------------
+% EVALUACION DE DESTINOS DE PASTOREO
+% -----------------------------------------
+situacion(L, evaluacion_destino(P), E) :-
+    once(lote(L, _)),
+    potrero(P),
+
+    % Identificar impedimentos.
+    findall(
+        B,
+        bloqueo_destino(L, P, B),
+        Bloqueos0
+    ),
+    sort(Bloqueos0, Bloqueos),
+
+    % Identificar informacion faltante.
+    findall(
+        F,
+        falta_destino(P, F),
+        Faltantes0
+    ),
+    sort(Faltantes0, Faltantes),
+
+    % Clasificacion propia de potreros.
+    ( Bloqueos \== []
+    ->
+        Estado = no_apto
+
+    ; Faltantes \== []
+    ->
+        Estado = no_se_sabe
+
+    ;
+        Estado = apto
+    ),
+
+    E = [
+        bloqueos(Bloqueos),
+        falta_verificar(Faltantes),
+        estado(Estado)
+    ].
+
+
+% Explicar cuando no existe un destino
+% completamente validado.
+
+situacion(L, sin_destino_confirmado, E) :-
+    once(lote(L, _)),
+
+    findall(
+        destino(P, Estado, Bloqueos, Faltantes),
+        (
+            potrero(P),
+            situacion(L, evaluacion_destino(P), R),
+            memberchk(estado(Estado), R),
+            memberchk(bloqueos(Bloqueos), R),
+            memberchk(falta_verificar(Faltantes), R)
+        ),
+        Revision
+    ),
+
+    \+ member(
+        destino(_, apto, _, _),
+        Revision
+    ),
+
+    ( member(destino(_, no_se_sabe, _, _), Revision)
+    ->
+        EstadoFinal = no_se_sabe
+    ;
+        EstadoFinal = no_apto
+    ),
+
+    E = [
+        destinos_evaluados(Revision),
+        estado(EstadoFinal)
+    ].
+
+
+% -----------------------------------------
+% SITUACION 5 - REQUISITOS PENDIENTES
+% -----------------------------------------
+% Falta constancia de una campana
+% correspondiente al escenario.
+falta_salida(Lote, campana_sin_constancia(Animal, C)) :-
+    lote(Lote, Animal),
+    campana(C, DiaCampana),
+    ahora(Actual),
+    DiaCampana =< Actual,
+    \+ (
+        aplicacion(Animal, C, Dia),
+        Dia >= DiaCampana,
+        Dia =< Actual
+    ).
+
+% No existe una guia autorizada
+% documentada y vigente en la simulacion.
+falta_salida(Lote, guia_sin_autorizacion_verificada) :-
+    once(lote(Lote, _)),
+    \+ (
+        evento(Lote, guia_transito, autorizada, Dia),
+        ahora(Actual),
+        Dia =< Actual
+    ).
+
+% Coincidencia de arete sin identidad
+% confirmada entre dos registros.
+falta_salida(Lote, identidad_pendiente(Animal, Otro)) :-
+    lote(Lote, Animal),
+    situacion(
+        identidad(R1, R2),
+        identidad_no_determinada,
+        _
+    ),
+    (
+        (Animal = R1, Otro = R2)
+    ;
+        (Animal = R2, Otro = R1)
+    ).
+
+% Historial de contacto insuficiente.
+falta_salida(Lote, historial_contacto_no_verificado) :-
+    situacion(Lote, contacto_no_determinable, _).
+
+% -----------------------------------------
+% EVALUACION DE SALIDA DEL LOTE
+% -----------------------------------------
+situacion(Lote, evaluacion_salida, E) :-
+    once(lote(Lote, _)),
+
+    findall(
+        B,
+        motivo_bloqueo(Lote, B),
+        Bloqueos0
+    ),
+    sort(Bloqueos0, Bloqueos),
+
+    findall(
+        F,
+        falta_salida(Lote, F),
+        Faltantes0
+    ),
+    sort(Faltantes0, Faltantes),
+
+    ( Bloqueos \== []
+    ->
+        Estado = no_puede_salir
+    ; Faltantes \== []
+    ->
+        Estado = no_se_sabe
+    ;
+        Estado = puede_salir
+    ),
+
+    E = [
+        impedimentos(Bloqueos),
+        falta_verificar(Faltantes),
+        estado(Estado)
+    ].
+
+% Consulta explicita de elegibilidad.
+decide(Lote, salida(Estado), E) :-
+    situacion(Lote, evaluacion_salida, E),
+    memberchk(estado(Estado), E).
+
+
+% -----------------------------------------
+% ESTADOS DE AUTORIZACION DE SALIDA
+% -----------------------------------------
+% Existe al menos un impedimento.
+estado_salida([_|_], _, no_puede_salir) :- !.
+
+% No hay impedimentos, pero falta evidencia.
+estado_salida([], [_|_], no_se_sabe) :- !.
+
+% Todos los requisitos modelados cumplen.
+estado_salida([], [], puede_salir).
