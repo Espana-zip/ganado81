@@ -1,71 +1,82 @@
-
 from html import escape
 
 
 def svg_pesajes(animal, mediciones):
-    """Genera una gráfica SVG con pesajes reales del modelo."""
-
+    """Dibuja lecturas registradas por Prolog en un SVG legible y sin dependencias."""
     datos = sorted(
         (int(dia), float(peso))
         for dia, peso in mediciones
     )
-
     if not datos:
         raise ValueError("No existen pesajes")
 
-    ancho, alto = 760, 360
+    ancho, alto = 720, 395
+    izquierda, derecha = 90, 630
+    arriba, abajo = 105, 307
 
-    dias = [d for d, _ in datos]
-    pesos = [p for _, p in datos]
-
-    dia_min = min(dias)
-    rango_dias = max(max(dias) - dia_min, 1)
-
-    peso_min = min(pesos) - 10
-    peso_max = max(pesos) + 10
-    rango_pesos = peso_max - peso_min
+    dias = [dia for dia, _ in datos]
+    pesos = [peso for _, peso in datos]
+    minimo_dia, maximo_dia = min(dias), max(dias)
+    rango_dias = max(maximo_dia - minimo_dia, 1)
+    margen_peso = max(10, (max(pesos) - min(pesos)) * 0.12)
+    minimo_peso = min(pesos) - margen_peso
+    maximo_peso = max(pesos) + margen_peso
+    rango_pesos = maximo_peso - minimo_peso
 
     def coordenadas(dia, peso):
-        x = 65 + (dia - dia_min) / rango_dias * 630
-        y = 285 - (peso - peso_min) / rango_pesos * 220
+        if minimo_dia == maximo_dia:
+            x = (izquierda + derecha) / 2
+        else:
+            x = izquierda + (dia - minimo_dia) / rango_dias * (derecha - izquierda)
+        y = abajo - (peso - minimo_peso) / rango_pesos * (abajo - arriba)
         return x, y
 
-    puntos = [
-        coordenadas(dia, peso)
-        for dia, peso in datos
-    ]
+    puntos = [coordenadas(dia, peso) for dia, peso in datos]
+    linea = " ".join(f"{x:.1f},{y:.1f}" for x, y in puntos)
 
-    linea = " ".join(
-        f"{x:.1f},{y:.1f}" for x, y in puntos
-    )
+    marcadores = []
+    for (dia, peso), (x, y) in zip(datos, puntos):
+        anclaje = "middle" if minimo_dia == maximo_dia else (
+            "start" if x < (izquierda + derecha) / 2 else "end"
+        )
+        # Valor y día en líneas diferentes y con fuentes más grandes.
+        marcadores.append(
+            f'<g>'
+            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="7" '
+            f'fill="#157347" stroke="white" stroke-width="2"/>'
+            f'<text x="{x:.1f}" y="{y-33:.1f}" text-anchor="{anclaje}" '
+            f'font-size="23" font-weight="700" fill="#174d36">{peso:g} kg</text>'
+            f'<text x="{x:.1f}" y="{y-12:.1f}" text-anchor="{anclaje}" '
+            f'font-size="19" font-weight="600" fill="#4d5c56">Día {dia}</text>'
+            f'</g>'
+        )
 
-    marcadores = "".join(
-        f'<circle cx="{x:.1f}" cy="{y:.1f}" '
-        f'r="5" fill="#16a34a"/>'
-        f'<text x="{x+8:.1f}" y="{y-12:.1f}" '
-        f'font-size="12" fill="#334155">'
-        f'{peso:g} kg · día {dia}</text>'
-        for (dia, peso), (x, y)
-        in zip(datos, puntos)
-    )
+    # Tres referencias de peso hacen la gráfica más fácil de interpretar.
+    referencias = []
+    for proporcion in [0.0, 0.5, 1.0]:
+        peso = minimo_peso + proporcion * rango_pesos
+        y = abajo - proporcion * (abajo - arriba)
+        referencias.append(
+            f'<line x1="{izquierda}" y1="{y:.1f}" x2="{derecha}" y2="{y:.1f}" '
+            f'stroke="#e7eee9" stroke-width="1"/>'
+            f'<text x="{izquierda-12}" y="{y+6:.1f}" text-anchor="end" '
+            f'font-size="17" fill="#52675d">{peso:g}</text>'
+        )
 
-    titulo = escape(str(animal))
-
+    titulo = escape(str(animal), quote=True)
     return f'''<svg xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 {ancho} {alto}">
+      viewBox="0 0 {ancho} {alto}" role="img"
+      aria-label="Pesajes de {titulo} en kilogramos por día simulado"
+      font-family="Arial, Helvetica, sans-serif">
       <rect width="100%" height="100%" fill="#ffffff"/>
-      <text x="35" y="35" font-size="22"
-        font-weight="bold" fill="#0f172a">
-        Pesajes de {titulo}
-      </text>
-      <line x1="65" y1="45" x2="65" y2="295"
-        stroke="#94a3b8"/>
-      <line x1="65" y1="295" x2="710" y2="295"
-        stroke="#94a3b8"/>
-      <polyline points="{linea}"
-        fill="none" stroke="#16a34a"
-        stroke-width="3"/>
-      {marcadores}
-      <text x="320" y="335" font-size="13"
-        fill="#475569">Día simulado</text>
+      <text x="26" y="34" font-size="25" font-weight="700" fill="#163f2e">Pesajes de {titulo}</text>
+      <text x="26" y="59" font-size="16" fill="#51685b">Lecturas registradas · modelo académico</text>
+      {''.join(referencias)}
+      <line x1="{izquierda}" y1="{arriba-5}" x2="{izquierda}" y2="{abajo+7}" stroke="#b4c3bb" stroke-width="2"/>
+      <line x1="{izquierda}" y1="{abajo+7}" x2="{derecha+8}" y2="{abajo+7}" stroke="#b4c3bb" stroke-width="2"/>
+      <polyline points="{linea}" fill="none" stroke="#157347"
+        stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+      {''.join(marcadores)}
+      <text x="360" y="363" text-anchor="middle" font-size="19"
+        font-weight="600" fill="#4d5c56">Día simulado</text>
     </svg>'''
